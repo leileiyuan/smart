@@ -16,7 +16,6 @@ import java.util.List;
  */
 @WebServlet("/customer")
 public class CustomerServlet extends HttpServlet {
-
     private CustomerService customerService;
 
     @Override
