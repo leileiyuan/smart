@@ -49,8 +49,6 @@ public class CustomerService {
         } finally {
             DatabaseHelper.closeConnection(conn);
         }
-
-
         return null;
     }
 
