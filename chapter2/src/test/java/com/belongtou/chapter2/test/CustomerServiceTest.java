@@ -1,10 +1,13 @@
 package com.belongtou.chapter2.test;
 
+import com.belongtou.chapter2.helper.DatabaseHelper;
 import com.belongtou.chapter2.model.Customer;
 import com.belongtou.chapter2.service.CustomerService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,11 +18,14 @@ import java.util.Map;
  */
 public class CustomerServiceTest {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerServiceTest.class);
+
     private final CustomerService customerService = new CustomerService();
 
     @Before
     public void init() throws Exception {
-//       DatabaseHelper.executeSqlFile("sql/customer_init.sql");
+        String file = "sql/customer_init.sql";
+        DatabaseHelper.executeSqlFile(file);
     }
 
     @Test
@@ -48,9 +54,9 @@ public class CustomerServiceTest {
     @Test
     public void updateCustomerTest() throws Exception {
 
-        long id = 1;
-        Map<String,Object> map = new HashMap<>(1);
-        map.put("contact","Eric");
+        long id = 3;
+        Map<String, Object> map = new HashMap<>(1);
+        map.put("contact", "Eric");
         boolean result = customerService.updateCustomer(id, map);
         Assert.assertTrue(result);
     }
